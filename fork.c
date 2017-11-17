@@ -5,17 +5,11 @@ pid_t fork(void);
 pid_t wait(int *stat_loc);
 
 int add(int arrary[],int i,int n);
-void makearray(int array[],int n);
+
 
 int main()
 {
-void makearray(int array[],int n)
-{
-	for(int i=0; i<n;i++)
-	 {
-		array[i]=i;
-	 }
-}
+
 
 int add(int array[],int i,int n)
 {
@@ -33,10 +27,14 @@ int cpid=0, i=0, j=0, totalsum=0;
 int sum1=0;
 int sum2=0;
 int length=0;
-int *array;
-makearray(array,100);
+int array[]={1,1,1,1,1,
+ 	     1,1,1,1,1,
+	     1,1,1,1,1,
+	      1,1,1,1,1,
+	     1,1,1,1,1};
 
-for(int i=0; i<3; i++)
+
+for(int i=0; i<4; i++)
 {
 	int cpid=fork();
 	if (cpid==0)
@@ -45,14 +43,14 @@ for(int i=0; i<3; i++)
 	   }
 	else
 	  {
-		sum2=add(array,0,25);
+		sum2+=add(array,0,25);
 		totalsum=sum1+sum2;
-		
-		printf("Total Sum= %d\n",totalsum);
+		printf("Total Sum %d time= %d\n",i,totalsum);
 
 	  }
-}
-wait(NULL);
 
+}
+
+wait(NULL);
 
 }
